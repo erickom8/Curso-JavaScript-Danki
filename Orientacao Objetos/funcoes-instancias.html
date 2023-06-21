@@ -1,0 +1,43 @@
+<html>
+    <body>
+        <script>
+            function Pessoa(){
+                this.nome = 'Erick';
+                this.idade = 18;
+                this.printNome = function(numero){
+                    alert(numero);
+                };
+                this.returnAnimal = function(animal){
+                    return animal;
+                };
+            }
+
+            function Animal(){
+                this.nome = "Cachorro";
+                this.raca = "Pug";
+            }
+
+            //     if (peso == undefined) {
+            //         peso = "6Kg";
+            //     }
+            //     this.nome = nome;
+            //     this.peso = peso;
+
+            // }
+
+            var pessoa = new Pessoa();
+
+            var animal = new Animal();
+
+
+            alert(pessoa.returnAnimal(animal).raca);
+
+
+
+
+
+
+
+        </script>
+    </body>
+</html>
