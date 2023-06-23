@@ -1,0 +1,41 @@
+<html>
+    <body>
+        <style>
+            .conteudo h2 span {
+                font-size: 12px;
+                cursor: pointer;
+            }
+
+            .conteudo p{
+                overflow:hidden;
+                height:0px;
+                transition: 1s;
+            }
+
+            .active {
+                height: 200px !important;
+            }
+        </style>
+        <div class="conteudo">
+            <h2>Título do meu conteúdo <span>Ver mais!</span></h2>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
+        <script>
+            var span = document.querySelector('.conteudo span');
+
+            span.addEventListener('click', function(){
+                var conteudo = document.querySelector('.conteudo p');
+
+                if (conteudo.classList.contains('active')){
+                    span.innerHTML = 'Ver mais!';
+                    conteudo.classList.remove('active');
+                }else {
+                    span.innerHTML = 'Ocultar';
+                    conteudo.classList.add('active');
+                };
+                
+            });
+
+        </script>
+    </body>
+</html>
