@@ -1,18 +1,52 @@
 <html>
     <body>
-        <div id='box'></div>
+        <!--<div id='box'></div>-->
+
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
     </body>
     <script>
+        /*
         var elemento = document.getElementById('box');
         elemento.style.width = 100;
         elemento.style.height = 100;
         elemento.style.backgroundColor = 'red';
         elemento.style.marginLeft = 200;
-
+        */
+       
         //margin-left (CSS)
         //marginLeft (JS)
 
         //background-color (CSS)
-        //backgroundColora (JS)
+        //backgroundColor (JS)
+
+
+        var elementos = document.getElementsByClassName("box");
+        /*
+        var elemento = elementos[0];
+        elemento.style.width = 100;
+        elemento.style.height = 100;
+        elemento.style.backgroundColor = 'green';
+        elemento.style.marginLeft = 200;
+        */
+
+       for(var i = 0; i<elementos.length; i++){
+        var elemento = elementos[i];
+
+        elemento.style.width = 100;
+        elemento.style.height = 100;
+        elemento.style.backgroundColor = 'green';
+        elemento.style.marginLeft = 200;
+        elemento.style.marginTop = 5;
+        elemento.style.borderWidth = 5;
+        elemento.style.borderColor = 'black';
+        elemento.style.borderStyle = 'solid';
+       }
+
+
     </script>
 </html>
