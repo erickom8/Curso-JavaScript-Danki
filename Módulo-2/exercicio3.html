@@ -1,0 +1,39 @@
+<html><body>
+    <script>
+        //Aplicação calculadora dinâmica
+
+        var numero1 = prompt('informe o primeiro número...');
+
+        var sinal = prompt('informe o sinal da sua operação');
+
+        while(sinal != '-' && sinal != '+' && sinal != '/' && sinal != '*'){
+            alert("Por Favor, informe um sinal válido!")
+            var sinal = prompt('informe o sinal da sua operação...');
+        }
+
+        var numero2 = prompt('informe o númeroo2...');
+
+        //Funções para converter uma string para número:
+        numero1 = parseInt(numero1);
+        numero2 = parseInt(numero2);
+        
+        
+        var resultado = 0;
+
+        if (sinal == '+'){
+            var resultado = numero1+numero2;
+
+        }else if (sinal == '-'){
+            var resultado = numero1-numero2;
+
+        }else if(sinal == '/'){
+            var resultado = numero1/numero2;
+
+        }else if(sinal == '*'){
+            var resultado = numero1*numero2;
+        }
+        alert('O resultadoo2 é ' + resultado);
+
+
+    </script>
+</body></html>

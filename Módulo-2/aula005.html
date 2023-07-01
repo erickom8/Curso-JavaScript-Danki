@@ -1,0 +1,32 @@
+<html>
+<body>
+    <script>
+        function testes (){
+            //será executado quando chamar a função
+            console.log('chamando a função testes');
+
+        }
+
+        function testes2(nome,idade){
+            console.log("O nome passado é: "+nome);
+            console.log("A idade é:"+idade);
+            console.log('-=-=-=-=-=-=-=-');
+        }
+
+        function pegarNome(parametro){
+            if (parametro == 1){
+                return 'Erick';
+            } else{
+                return "oi"
+            }
+            
+            console.log('oi')//função terminou no return, por isso o 'oi' não aparece
+        }
+
+        var nome = pegarNome(1);
+        console.log(nome);
+
+
+    </script>    
+</body>
+</html>
