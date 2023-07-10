@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <title>Pokedéx</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <div class="main">
+            <h2>Pokedéx</h2>
+            <br/>
+            <input id="quantidade" placeholder="Insira a quantidade de Pokemons:">
+            <div class="pokemon-boxes">
+                
+            </div><!--Pokemon-boxes-->
+        </div>
+        <script>
+
+            var quantidade = document.getElementById('quantidade');
+            quantidade.addEventListener('keyup',()=>{
+                pegaPokemons(quantidade.value);
+            })
+            
+            function pegaPokemons(quantidade){
+                fetch('https://pokeapi.co/api/v2/pokemon?limit='+quantidade+"&offset=0")
+                .then(response => response.json())
+                .then(allpokemon => {
+                
+
+                    var pokemons = [];
+                    console.log(pokemons);
+                    allpokemon.results.map((val)=>{                    
+
+                        fetch(val.url)
+                        .then(response => response.json())
+                        .then(pokemonSingle => {
+                            
+                            pokemons.push({
+                                nome: val.name, 
+                                imagem: pokemonSingle.sprites.front_default 
+                            });
+
+
+                            if(pokemons.length == quantidade){
+                                //Finalizamos nossas requisições.
+
+                                var pokemonBoxes = document.querySelector('.pokemon-boxes');
+                                pokemonBoxes.innerHTML = "";
+
+
+                                pokemons.map(function(val){
+
+                                    pokemonBoxes.innerHTML+= `
+                                    <div class="pokemon-box">
+                                        <img src="`+val.imagem+`"/>
+                                        <p>`+val.nome+`</p>
+                                    </div>
+                                    `;
+                                })
+                            }
+                        })
+
+                    })
+
+
+                })
+            }
+        </script>
+    </body>
+</html>
