@@ -1,0 +1,121 @@
+<html>
+    <body>
+        <style>
+            .player-options img,
+            .enemy-options img{
+                max-width: 200px;
+                opacity: 0.25;
+                cursor: pointer;
+            }
+            .player-options, .enemy-options{
+                width: 50%;
+            }
+            .align {
+                display: flex;
+            }
+
+            h1, h2{
+                text-align: center;
+            }
+        </style>
+        <h1>Pedra, papel ou tesoura!</h1>
+        <h2 class="vencedor"></h2>
+        <hr>
+        <div class="align">
+            <div class="player-options">
+                <div><img opt ="pedra" src="rock.png"></div>
+                <div><img opt = "papel"src="paper.png"></div>
+                <div><img opt = "tesoura"src="scisor.png"></div>
+            </div>
+    
+            <div class="enemy-options">
+                <div><img opt ="pedra" src="rock.png"></div>
+                <div><img opt = "papel" src="paper.png"></div>
+                <div><img opt = "tesoura" src="scisor.png"></div>
+            </div>
+        </div>
+        
+
+        <script>
+            var elementos = document.querySelectorAll(" .player-options div > img");
+            var playerOpt = '';
+            var inimigoOpt = '';
+
+            function validarVitoria(){
+                let vencedor = document.querySelector(" .vencedor");
+                if(playerOpt == 'papel' ){
+
+                    if (inimigoOpt == 'rock'){
+                        vencedor.innerHTML = 'O player ganhou';   
+                    } else if (inimigoOpt == 'papel'){
+                        vencedor.innerHTML = "Deu Empate!";
+                    }else{
+                        vencedor.innerHTML = "O player Perdeu :(";
+                    }
+
+                } else if (playerOpt == 'tesoura'){
+                    if (inimigoOpt == 'papel'){
+                        vencedor.innerHTML = 'O player ganhou!';   
+                    } else if (inimigoOpt == 'tesoura'){
+                        vencedor.innerHTML = "Deu Empate!";
+                    }else{
+                        vencedor.innerHTML = "O player Perdeu :(";
+                    }
+                } else if (playerOpt == 'pedra'){
+                    if (inimigoOpt == 'tesoura'){
+                        vencedor.innerHTML = 'O player ganhou!';   
+                    } else if (inimigoOpt == 'pedra'){
+                        vencedor.innerHTML = "Deu Empate!";
+                    }else{
+                        vencedor.innerHTML = "O player Perdeu :(";
+                    }
+                }
+                
+            }
+            
+
+            function resetInimigo(){
+                const enemyOptions = document.querySelectorAll(" .enemy-options div img")
+                for(var i = 0; i< enemyOptions.length; i++){       
+                    enemyOptions[i].style.opacity = 0.25;
+                    
+                }
+            }
+
+            function inimigoJogar(){
+                let rand = Math.floor(Math.random()*3);
+
+                const enemyOptions = document.querySelectorAll(" .enemy-options div img")
+                resetInimigo();
+                for(var i = 0; i< enemyOptions.length; i++){
+                    if (i == rand){
+                        enemyOptions[i].style.opacity = 1;
+                        inimigoOpt = enemyOptions[i].getAttribute("opt");
+                    }
+                }
+
+                alert(playerOpt);
+                alert(inimigoOpt);
+                validarVitoria();
+
+            }
+            function resetOpacityPlayer(){
+                for(var i = 0; i < elementos.length; i++){
+                    elementos[i].style.opacity = 0.25;
+                }
+            }
+            for(var i = 0; i < elementos.length; i++){
+                elementos[i].addEventListener("click", function(t){
+                    resetOpacityPlayer();
+                    t.target.style.opacity = 1;
+                    playerOpt = t.target.getAttribute('opt');
+
+                    inimigoJogar();
+                    
+                });
+            }
+
+
+        </script>
+    </body>
+</html>
